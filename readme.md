@@ -1,15 +1,16 @@
 # Install
-
+```
 git clone https://github.com/slenderock/git-hotfix.git && cd git-hotfix && chmod +x hf && sudo ln -s $PWD/hf /usr/bin/hf
-
+```
 # Update
 
 ```
 hf self-update
 ```
 or
+```
 sudo rm /usr/bin/hf && git clone https://github.com/slenderock/git-hotfix.git && cd git-hotfix && chmod +x hf && sudo ln -s $PWD/hf /usr/bin/hf
-
+```
 # Usage hints
 
 ```
@@ -23,25 +24,26 @@ hf config
 hf reset
 hf get
 hf st
+hf steal
 ```
 
 # Examples
 
-###Create new branch 'hotfix/123' from master:
+### Create new branch 'hotfix/123' from master:
 
 ```
 hf 123
 ```
 From ANY branch. It will exec "git checkout master && git checkout -b hotfix/123"
 
-###Goto 'hotfix/123' if it exists:
+### Goto 'hotfix/123' if it exists:
 
 ```
 hf 123
 ```
 From ANY branch. It will exec "git checkout hotfix/123"
 
-###Commit with comment 'foo' and push to remote:
+### Commit with comment 'foo' and push to remote:
 
 ```
 hf save "foo"
@@ -50,49 +52,55 @@ It will save CURRENT hotfix branch with "git add . && git commit -a -m '#123 foo
 Running any "save" command you will see WHAT you actually exec.
 Try it! You can prevent execution with Ctrl+C
 
-###Merge 'hotfix/123' into master, push master to remote:
+### Merge 'hotfix/123' into master, push master to remote:
 
 ```
 hf save master
 ```
 
-###Commit with comment 'foo', push to remote, merge 'hotfix/123' into master & develop, push master & develop to remote:
+### Commit with comment 'foo', push to remote, merge 'hotfix/123' into master & develop, push master & develop to remote:
 
 ```
 hf save master develop "foo"
 ```
 
-###Same as "save" + running deploy scripts from .hf.yml
+### Same as "save" + running deploy scripts from .hf.yml
 You can change deploy commands with `hf config` or in .hf.yml
 ```
 hf deploy master develop "foo"
 ```
 
-###Config deployment & mode
+### Config deployment & mode
 
-###Merge main branch into current branch
+### Merge main branch into current branch
 You can change main branch with `hf config` or in .hf.yml
 
 ```
 hf sync
 ```
 
-###Remove all merged (into main branch) hotfix branches (local & remote):
+### Remove all merged (into main branch) hotfix branches (local & remote):
 You can change main branch with `hf config` or in .hf.yml
 ```
 hf delete-merged
 ```
 
-###Update current branch with remote version
+### Update current branch with remote version
 ```
 hf get
 ```
 
-###Browse git status
+### Browse git status
 
 ```
 hf st
 ```
+### Steal all commits
+You can become be an author of all commits of current repository by using:
+```
+hf steal
+```
+`WARNING:` This feature was created only to help people fastly rebase all commits when you need to change author.
 
 # TODO
 
