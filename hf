@@ -8,12 +8,9 @@ PROJECT_DIR = `pwd`.delete('\n').freeze
 # p PROJECT_DIR
 
 require 'yaml'
-require ROOT_DIR + '/context.rb'
-require ROOT_DIR + '/config.rb'
-require ROOT_DIR + '/remote.rb'
-require ROOT_DIR + '/exec_cli.rb'
-Dir[ROOT_DIR + '/actions/*.rb'].each { |file| require file }
 Dir[ROOT_DIR + '/lib/*.rb'].each { |file| require file }
+Dir[ROOT_DIR + '/config/*.rb'].each { |file| require file }
+Dir[ROOT_DIR + '/actions/*.rb'].each { |file| require file }
 
 def help_action
   print "\nVersion: #{VERSION}".underlined + "\n\n"
